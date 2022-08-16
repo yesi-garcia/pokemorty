@@ -10,8 +10,6 @@ app.use(express.json());
 // app.use(express.static("storage"))
 app.use(morgan(`dev`));
 
-
-
 const port = process.env.PORT || 3001
 
 app.use("/api", require("./routes"))
