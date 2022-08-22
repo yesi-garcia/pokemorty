@@ -4,7 +4,10 @@ const cosr = require('cors');
 const morgan = require('morgan');
 const app = express();
 
+
 const db = require('./config/db');
+require('./models/index');
+
 app.use(cosr());
 app.use(express.json());
 // app.use(express.static("storage"))
