@@ -25,8 +25,10 @@ const user = sequelize.define('user', {
         unique: true
     },
     role: {
-        type: DataTypes.ENUM(['user', 'admin']),
-        default: 'user'
+        type: DataTypes.STRING,
+        values: ['user', 'admin'],
+        defaultValue: 'user'
+
     }
 }, {
     timestamps: true,
