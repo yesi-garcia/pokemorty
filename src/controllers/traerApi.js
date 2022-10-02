@@ -13,6 +13,7 @@ const traerApi = async(req, res, _next) => {
         const response = await intanciaAxios.get(getParams);
         res.send(response.data);
 
+
     } catch (error) {
         handleHttpError(res, 'ERROR_EN _TRAER_API');
     }
