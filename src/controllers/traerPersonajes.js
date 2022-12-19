@@ -1,5 +1,4 @@
 const { handleHttpError } = require('../helpers/handleError');
-const personajes = require('../business/getPersonajesFromApi');
 const insertarPersonajes = require('../business/insertPersonajes');
 const traerPersonajes = async(_req, res, _next) => {
     try {
