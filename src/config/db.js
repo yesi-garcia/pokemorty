@@ -12,7 +12,7 @@ const sequelize = new Sequelize(
     POSTGRES_PASSWORD, {
         host: POSTGRES_HOST,
         dialect: 'postgres',
-        port: '5433',
+        port: '5434',
         "logging": false,
         pool: {
             max: 5,

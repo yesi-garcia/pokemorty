@@ -1,4 +1,7 @@
 const models = {
-    userModel: require('./user')
+    personajesModel: require('./personajes'),
+    localizacionesModel: require('./localizaciones'),
+    pokemonesModel: require('./pokemones'),
+    depositosModel: require('./depositos')
 }
 module.exports = models;

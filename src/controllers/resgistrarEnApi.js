@@ -5,18 +5,26 @@ const insertarRegistroEnApi = async(req, res, _next) => {
 
     const {
         body: {
-            title,
-            body,
-            userId
+            name,
+            status,
+            species,
+            type,
+            gender,
+            origin,
+            image
         }
     } = req;
 
     const request = {
-        url: 'https://jsonplaceholder.typicode.com/posts',
+        url: 'https://rickandmortyapi.com/api/character',
         data: {
-            title,
-            body,
-            userId
+            name,
+            status,
+            species,
+            type,
+            gender,
+            origin,
+            image
         },
         headers: {}
     }
