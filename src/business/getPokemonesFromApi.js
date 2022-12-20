@@ -4,7 +4,7 @@ const { handleHttpError } = require('../helpers/handleError');
 module.exports = async() => {
     try {
         const getParams = {
-            url: 'https://pokeapi.co/api/v2/pokemon',
+            url: 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=150',
             params: {},
             headers: {}
         };
