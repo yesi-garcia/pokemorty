@@ -8,8 +8,9 @@ module.exports = async() => {
             params: {},
             headers: {}
         };
-        return await intanciaAxios(getParams);
+        return await intanciaAxios.get(getParams);
     } catch (error) {
+        console.log(error)
         handleHttpError(res, 'ERROR-EN-TRAER-API');
     }
 };

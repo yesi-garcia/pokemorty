@@ -15,15 +15,15 @@ const pokemones = sequelize.define('pokemones', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    weight: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    height: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        unique: true
-    },
+    // weight: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false
+    // },
+    // height: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false,
+    //     unique: true
+    // },
 
 }, {
     timestamps: true,
