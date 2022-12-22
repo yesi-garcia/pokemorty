@@ -22,7 +22,7 @@ const sequelize = new Sequelize(
         }
     });
 sequelize
-    .sync({ force: true })
+    .sync()
     .then(() => {
         console.log('se establecio la conexion');
     })
