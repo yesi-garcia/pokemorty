@@ -15,4 +15,14 @@ const buscarTodosPorPersonaje = async(idPersonaje) => {
         handleHttpError(res, 'NO-ENCONTRADO', 404)
     }
 };
-module.exports = { create, buscarTodosPorPersonaje };
+const countTodosPorPersonaje = async(idPersonaje) => {
+    const { count, rows } = await depositos.findAndCountAll({
+        where: {
+            id_personaje: idPersonaje
+        },
+        offset: 10,
+        limit: 2
+    });
+    return count;
+}
+module.exports = { create, buscarTodosPorPersonaje, countTodosPorPersonaje };

@@ -13,7 +13,7 @@ const enviarDeposito = async(req, res, _next) => {
         const response = await insertarEnDeposito({ personaje, pokemon, localizacion });
         res.json(response);
     } catch (error) {
-        handleHttpError(res, 'ERROR_EN _TRAER_API');
+        handleHttpError(res, error.message, error.code);
     }
 }
 module.exports = enviarDeposito;
