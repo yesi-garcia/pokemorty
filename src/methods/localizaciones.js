@@ -15,6 +15,6 @@ const buscarLocalizacion = async(name) => {
     } catch (error) {
         handleHttpError(res, 'NO-ENCONTRADO', 404)
     }
-
 };
+
 module.exports = { create, buscarLocalizacion };
