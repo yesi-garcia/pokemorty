@@ -17,9 +17,10 @@ const insertarEnDeposito = async({ personaje, pokemon, localizacion }) => {
         terceros: {
             "Summer Smith": 10,
             "Beth Smith": 10,
-            "Jerry Smith": 1
+            "Jerry Smith": 1,
         }
     };
+
     if (personaje in MAP_PERSONAJES_CANT_POKEMONS.terceros && localizacionResult.name === 'Earth (C-137)') {
         //buscar ya sea por jerry summer y beth
         if (MAP_PERSONAJES_CANT_POKEMONS.terceros[personajeResult.name] === cantidadPokemonesEnDeposito) {

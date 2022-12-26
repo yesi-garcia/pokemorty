@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const enviarDeposito = require('../controllers/enviarDeposito');
+const enviarRegistroADeposito = require('../controllers/enviarDeposito');
 
-router.post('/', enviarDeposito);
+router.post('/insertar', enviarRegistroADeposito);
 
 module.exports = router;
