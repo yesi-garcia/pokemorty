@@ -1,17 +1,30 @@
-const depositos = require('../methods/depositos');
 const { buscarLocalizacion } = require('../methods/localizaciones');
 const { buscarPersonaje } = require('../methods/personajes');
 const { buscarPokemon } = require('../methods/pokemones');
-const { countTodosPorPersonaje } = require('../methods/depositos');
+const { countTodosPorPersonaje, countTodosPorPersonajeYlocalizacion, create } = require('../methods/depositos');
 
 const insertarEnDeposito = async({ personaje, pokemon, localizacion }) => {
 
-    const [personajeResult, pokemonResult, localizacionResult] = await Promise.all([
-        buscarPersonaje(personaje),
-        buscarPokemon(pokemon),
-        buscarLocalizacion(localizacion)
-    ]);
+    const [
+        personajeResult,
+        pokemonResult,
+        localizacionResult,
+        buscar_a_morty,
+        buscarLocalizacionCitadela
+    ] = await Promise.all(
+        [
+            buscarPersonaje(personaje),
+            buscarPokemon(pokemon),
+            buscarLocalizacion(localizacion),
+            buscarPersonaje('Morty Smith'),
+            buscarLocalizacion('Citadel of Ricks')
+        ]
+    );
     const cantidadPokemonesEnDeposito = await countTodosPorPersonaje(personajeResult.id);
+
+    const registrosMorty = await countTodosPorPersonajeYlocalizacion(buscar_a_morty.id, buscarLocalizacionCitadela.id);
+
+    const buscarRegistroPorPersonajeYLocalizacion = await countTodosPorPersonajeYlocalizacion(personajeResult.id, buscarLocalizacionCitadela.id);
 
     const MAP_PERSONAJES_CANT_POKEMONS = {
         terceros: {
@@ -30,8 +43,16 @@ const insertarEnDeposito = async({ personaje, pokemon, localizacion }) => {
             };
         }
     }
+    if (personajeResult.name === 'Rick Sanchez' && localizacionResult.name === 'Citadel of Ricks') {
+        if (buscarRegistroPorPersonajeYLocalizacion >= registrosMorty) {
+            throw {
+                code: 400,
+                message: `Rick superas el maximo en citadela`
+            };
+        }
+    }
 
-    return await depositos.create({ id_personaje: personajeResult.id, id_pokemon: pokemonResult.id, id_localizacion: localizacionResult.id })
+    return await create({ id_personaje: personajeResult.id, id_pokemon: pokemonResult.id, id_localizacion: localizacionResult.id })
         .then(result => {
             return 'Pokemon guardado en deposito';
         });

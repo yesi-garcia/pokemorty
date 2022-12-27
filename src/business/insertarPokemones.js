@@ -7,18 +7,15 @@ module.exports = async() => {
             const {
                 name,
                 url
-                //weight,
-                //height
             } = pokemones
             create({
                 name,
                 url
-                //weight,
-                //height
             });
         });
+        return true
+
     } catch (error) {
 
     }
-    return true
 };

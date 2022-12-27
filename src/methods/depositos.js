@@ -25,4 +25,15 @@ const countTodosPorPersonaje = async(idPersonaje) => {
     });
     return count;
 }
-module.exports = { create, buscarTodosPorPersonaje, countTodosPorPersonaje };
+const countTodosPorPersonajeYlocalizacion = async(id_personaje, id_localizacion) => {
+    const { count, rows } = await depositos.findAndCountAll({
+        where: {
+            id_personaje,
+            id_localizacion
+        },
+        offset: 10,
+        limit: 2
+    });
+    return count;
+}
+module.exports = { create, buscarTodosPorPersonaje, countTodosPorPersonaje, countTodosPorPersonajeYlocalizacion };
