@@ -14,7 +14,6 @@ module.exports = async() => {
             });
         });
         return true
-
     } catch (error) {
 
     }

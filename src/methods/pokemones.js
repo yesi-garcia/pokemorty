@@ -5,7 +5,7 @@ const create = async(datos) => {
 const buscarPokemon = async(name) => {
     try {
         const result = await pokemones.findOne({
-            whrere: {
+            where: {
                 name
             },
             raw: true
@@ -14,6 +14,6 @@ const buscarPokemon = async(name) => {
     } catch (error) {
         handleHttpError(res, 'NO-ENCONTRADO', 404)
     }
-
 };
+
 module.exports = { create, buscarPokemon };

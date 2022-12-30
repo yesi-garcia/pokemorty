@@ -9,8 +9,20 @@ const depositos = sequelize.define('depositos', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
+    },
+    nombre: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    depositados: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
     }
 
+}, {
+    timestamps: true,
+    createdAt: "fecha_inicio",
+    updatedAt: "fecha_final",
 });
 
 depositos.belongsTo(personajes, {
@@ -28,9 +40,16 @@ pokemones.hasMany(depositos, {
 });
 
 depositos.belongsTo(localizaciones, {
-    foreignKey: 'id_localizacion'
+    foreignKey: 'id_origen',
 });
 localizaciones.hasMany(depositos, {
-    foreignKey: 'id_localizacion'
+    foreignKey: 'id_origen'
+});
+
+depositos.belongsTo(localizaciones, {
+    foreignKey: 'id_destino',
+});
+localizaciones.hasMany(depositos, {
+    foreignKey: 'id_destino',
 });
 module.exports = depositos;

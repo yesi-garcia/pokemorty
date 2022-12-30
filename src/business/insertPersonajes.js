@@ -26,9 +26,8 @@ module.exports = async() => {
                 image
             });
         });
+        return true;
     } catch (error) {
 
     }
-    return true;
-
 };

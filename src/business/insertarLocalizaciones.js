@@ -15,8 +15,8 @@ module.exports = async() => {
                 dimension
             });
         });
+        return true
     } catch (error) {
 
     }
-    return true
 };

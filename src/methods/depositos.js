@@ -15,6 +15,26 @@ const buscarTodosPorPersonaje = async(idPersonaje) => {
         handleHttpError(res, 'NO-ENCONTRADO', 404)
     }
 };
+const buscarPorId = async(id) => {
+    const resutl = await depositos.findOne({
+        where: {
+            id,
+        },
+        raw: true
+    });
+    return resutl;
+};
+const countTodosPorPersonajeYlocalizacionDestino = async(id_personaje, id_destino) => {
+    const { count, rows } = await depositos.findAndCountAll({
+        where: {
+            id_personaje,
+            id_destino
+        },
+        offset: 10,
+        limit: 2
+    });
+    return count;
+}
 const countTodosPorPersonaje = async(idPersonaje) => {
     const { count, rows } = await depositos.findAndCountAll({
         where: {
@@ -25,15 +45,13 @@ const countTodosPorPersonaje = async(idPersonaje) => {
     });
     return count;
 }
-const countTodosPorPersonajeYlocalizacion = async(id_personaje, id_localizacion) => {
-    const { count, rows } = await depositos.findAndCountAll({
+
+const updateDepositoDepositado = async(id) => {
+    const result = await depositos.update({ depositados: true }, {
         where: {
-            id_personaje,
-            id_localizacion
-        },
-        offset: 10,
-        limit: 2
+            id
+        }
     });
-    return count;
+    return result;
 }
-module.exports = { create, buscarTodosPorPersonaje, countTodosPorPersonaje, countTodosPorPersonajeYlocalizacion };
+module.exports = { create, buscarTodosPorPersonaje, countTodosPorPersonaje, updateDepositoDepositado, buscarPorId, countTodosPorPersonajeYlocalizacionDestino };

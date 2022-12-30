@@ -14,7 +14,7 @@ const pokemones = sequelize.define('pokemones', {
     url: {
         type: DataTypes.STRING,
         allowNull: false
-    },
+    }
     // weight: {
     //     type: DataTypes.INTEGER,
     //     allowNull: false
